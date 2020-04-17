@@ -1,0 +1,79 @@
+---
+title: "Statistics and R - Week 1"
+subtitle: "HarvardX PH525.1x: Data Analysis for Life Sciences 1"
+output: pdf_document
+---
+# Introduction & Resources
+
+## Textbook
+
+We will be using the textbook Data Analysis for the Life Science which is freely available [here](https://leanpub.com/dataanalysisforthelifesciences). The book is written in [R markdown](http://rmarkdown.rstudio.com/) which includes the R code used for several of the analysis shown in the course. The book includes links to the specific R markdown documents but you can access all of these in [this GitHub repository](https://github.com/genomicsclass/labs). We also provide an html version of the book [here](http://genomicsclass.github.io/book/).
+
+## R resources
+
+* [swirl](http://swirlstats.com/): learn R interactively from within the R console.
+* [R reference card](http://cran.r-project.org/doc/contrib/Short-refcard.pdf) (PDF) by Tom Short (more can be found under Short Documents and Reference Cards [here](http://cran.r-project.org/other-docs.html))
+* [Quick-R](http://www.statmethods.net/): quick online reference for data input, basic statistics and plots
+* Thomas Girke's [R & Bioconductor manuals](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual)
+* [R programming](https://www.coursera.org/course/rprog) class on Coursera,  taught by Roger Peng, Jeff Leek and Brian Caffo
+* The free ["try R"](http://tryr.codeschool.com/) class from Code School is also a good place to start
+* [Data structures summary](http://adv-r.had.co.nz/Data-structures.html) by Hadley Whickham
+
+## R books
+
+* _Software for Data Analysis_: Programming with R</u>(Statistics and Computing) by John M. Chambers (Springer)
+* _S Programming_ (Statistics and Computing) by Brian D. Ripley and William N. Venables (Springer)
+* _Programming with Data: A Guide to the S Language_ by John M. Chambers (Springer)
+  
+# Week 1
+
+# Getting Started
+
+Textbook code can be found [here](https://github.com/genomicsclass/labs/blob/master/intro/getting_started.Rmd) or downloaded:
+```{r, eval=FALSE, tidy=TRUE}
+library(downloader)
+url="https://github.com/genomicsclass/labs/raw/master/intro/getting_started.Rmd"
+filename=basename(url)
+download(url,filename)
+```
+
+## RUN SWIRL EXERCISES
+  
+Go through the R Programming Basic Building Blocks tutorial and then answer the following questions.
+```{r, eval=FALSE}
+install.packages("swirl")
+library(swirl)
+swirl()
+```
+1. What version of R are you using?
+```{r}
+R.version.string
+```
+2. Create a numeric vector containing the numbers 2.23, 3.45, 1.87, 2.11, 7.33, 18.34, 19.23. What is the average of these numbers?
+```{r}
+mean(c(2.23, 3.45, 1.87, 2.11, 7.33, 18.34, 19.23))
+```
+3. Use a for loop to determine the value of $\sum_{i=1}^{25}i^2$.
+```{r}
+sum(sapply(1:25, function(x) x^2))
+```
+4. The `cars` dataset is available in base R. You can type `cars` to see it. Use the `class` function to determine what type of object is `cars`.
+```{r}
+class(cars)
+```
+5. How many rows does the `cars` object have?
+```{r}
+nrow(cars)
+```
+6. What is the name of the second column of `cars`?
+```{r}
+colnames(cars)[2] 
+```
+7. The simplest way to extract the columns of a `matrix` or `data.frame` is using `[row,col]`. For example you can access the second column with `cars[,2]`. What is the average distance traveled in this dataset?
+```{r}
+mean(cars[,2])
+```
+8. Familiarize yourself with the `which` function. What row of `cars` has a distance of 85?
+```{r}
+which(cars[,"dist"]==85)
+```
